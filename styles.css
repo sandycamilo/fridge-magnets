@@ -39,11 +39,8 @@ body {
   .fridge {
     width: 100%;
   }
-}
 
-@media only screen and (max-width: 414px) {
   .draggable-container {
-    top: 50px;
-    left: -50px;
+    left: -20px;
   }
 }
