@@ -25,9 +25,41 @@ function makeDraggable(element) {
   document.addEventListener("mouseup", function () {
     isDragging = false;
   });
-}
 
-var draggableElements = document.querySelectorAll(".draggable");
-draggableElements.forEach(function (element) {
-  makeDraggable(element);
-});
+  document.addEventListener("DOMContentLoaded", function () {
+    const draggables = document.querySelectorAll(".draggable");
+
+    draggables.forEach((draggable) => {
+      let initialX;
+      let initialY;
+
+      let offsetX = 0;
+      let offsetY = 0;
+
+      draggable.addEventListener("touchstart", (e) => {
+        e.preventDefault();
+
+        initialX = e.touches[0].clientX;
+        initialY = e.touches[0].clientY;
+
+        const rect = draggable.getBoundingClientRect();
+        offsetX = initialX - rect.left;
+        offsetY = initialY - rect.top;
+      });
+
+      draggable.addEventListener("touchmove", (e) => {
+        e.preventDefault();
+
+        const currentX = e.touches[0].clientX - offsetX;
+        const currentY = e.touches[0].clientY - offsetY;
+
+        draggable.style.left = `${currentX}px`;
+        draggable.style.top = `${currentY}px`;
+      });
+    });
+  });
+}
+  var draggableElements = document.querySelectorAll(".draggable");
+  draggableElements.forEach(function (element) {
+    makeDraggable(element);
+  });

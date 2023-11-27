@@ -10,8 +10,8 @@ body {
 
 .draggable {
   position: absolute;
-  width: 10vw;
-  height: 10vw;
+  width: 7vw;
+  height: 7vw;
 }
 
 .fridge {
@@ -37,6 +37,6 @@ body {
   }
 
   .fridge {
-    width: 80%;
+    width: 100%;
   }
 }
